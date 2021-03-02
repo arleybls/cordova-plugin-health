@@ -337,8 +337,9 @@ public class HealthPlugin extends CordovaPlugin {
      * @param callbackContext
      */
     private void disconnect(final CallbackContext callbackContext) {
+        
         //if (this.account != null) {
-            Fitness.getConfigClient(this, GoogleSignIn.getAccountForExtension(this, FitnessOptions))
+            Fitness.getConfigClient(this.cordova.context(), GoogleSignIn.getAccountForExtension(this.account, FitnessOptions))
                     .disableFit()
                     .addOnSuccessListener(r -> {
                         callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, true));
