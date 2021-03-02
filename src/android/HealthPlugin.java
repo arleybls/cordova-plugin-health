@@ -337,8 +337,8 @@ public class HealthPlugin extends CordovaPlugin {
      * @param callbackContext
      */
     private void disconnect(final CallbackContext callbackContext) {
-        if (this.account != null) {
-            Fitness.getConfigClient(this.cordova.getContext(), GoogleSignIn.getAccountForExtension(this.cordova.getContext(), FitnessOptions))
+        //if (this.account != null) {
+            Fitness.getConfigClient(this, GoogleSignIn.getAccountForExtension(this, FitnessOptions))
                     .disableFit()
                     .addOnSuccessListener(r -> {
                         callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, true));
@@ -347,7 +347,7 @@ public class HealthPlugin extends CordovaPlugin {
                         err.getCause().printStackTrace();
                         callbackContext.error("cannot disconnect," + err.getMessage());
                     });
-        }
+        //}
     }
 
     // prompts to install GooglePlayServices if not available then Google Fit if not available
