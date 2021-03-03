@@ -341,6 +341,9 @@ public class HealthPlugin extends CordovaPlugin {
         //if (this.account != null) {
             //Context context = this.cordova.getActivity().getApplicationContext();
             //
+            signInOptions = new GoogleSignInOptions.Builder().addExtension(fitnessOptions).build();
+            client        = new GoogleSignIn.getClient(context, signInOptions);
+
             Fitness.getConfigClient(this.cordova.getContext(), this.account)
                     .disableFit()
                     .addOnSuccessListener(r -> {
